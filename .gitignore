@@ -13,3 +13,5 @@ __pycache__/
 .vscode/
 .DS_Store
 Thumbs.db
+# Cross-compiled ARM executable
+arm/inference_arm

@@ -87,7 +87,7 @@ The generated AArch64 assembly contains instructions such as:
 
 The optimized AArch64 listing also contains `fmadd`, which performs a fused multiply-add operation.
 
-These are examples from the generated listings. They should not be interpreted as a complete inventory of every instruction used at both optimization levels.
+These are examples from the generated listings. They are not a complete inventory of every instruction used at both optimization levels.
 
 ### Shared inference operations
 
@@ -99,7 +99,7 @@ Both implementations carry out the same high-level inference procedure:
 4. Apply the classification threshold.
 5. Print the prediction results.
 
-The generated instructions differ because the architectures have different instruction sets and calling conventions.
+The generated instructions differ because the architectures have different instruction sets, calling conventions, and target environments.
 
 ## 6. Effect of Compiler Optimization
 
@@ -150,15 +150,20 @@ To locate selected instructions in the AArch64 listings:
 Select-String -Path results\inference_ARM_O0.s,results\inference_ARM_O2.s -Pattern "fmul|fadd|fmadd|fdiv|fcmpe"
 ```
 
-The output can be used to identify relevant instruction sequences. Any detailed analysis should quote the actual surrounding assembly and explain the operation being performed.
+These commands help identify relevant instructions in the generated files. The examples described in this document are based on the recorded assembly inspection.
 
-## 8. Numerical Considerations
+## 8. Numerical Validation
 
 Floating-point calculations can differ slightly between compiled implementations because of rounding behavior, fused operations, and mathematical library implementations.
 
-The current project validates the C implementation against the Python reference for a fixed input and checks numerical agreement within a defined tolerance.
+The project includes automated tests comparing C inference against Python reference calculations for **66 inputs**:
 
-This is useful evidence for that test case, but it does not prove equivalence for every possible input. Broader testing would strengthen the validation.
+- 60 held-out test samples.
+- 6 additional edge inputs, including zero-valued inputs, positive and negative values, and a decision-boundary case.
+
+The tests check numerical agreement within a tolerance of `1e-9` and verify that predicted classes match. The recorded test run passed both test methods.
+
+This provides evidence of numerical consistency for the tested inputs. It does not prove equivalence for every possible input or establish real-world predictive performance.
 
 ## 9. Limitations
 
@@ -166,13 +171,16 @@ This is useful evidence for that test case, but it does not prove equivalence fo
 - The x86-64 and AArch64 targets use different instruction sets and operating-system environments.
 - Instruction count and assembly file size alone do not establish speed or energy efficiency.
 - The ARM64 executable has been tested under QEMU user-mode emulation, not on physical ARM hardware.
-- No systematic native ARM latency, throughput, or energy measurements have been established.
-- The current numerical validation covers the reference test case rather than an exhaustive input space.
-
-A fair performance comparison would require suitable hardware, equivalent workloads, controlled conditions, and repeated measurements.
+- Native ARM latency, throughput, and energy consumption have not been measured.
+- The classifier uses synthetic data and one fixed train/test split.
+- Numerical validation covers the documented test inputs rather than an exhaustive input space.
 
 ## 10. Conclusion
 
 This experiment demonstrates how a trained model's inference calculations can be implemented in C and translated into architecture-specific assembly.
 
-The generated x86-64 and AArch64 listings provide a basis for studying the effect of compiler optimization, including changes to floating-point instruction sequences such as the use
+The generated x86-64 and AArch64 listings illustrate how target architecture and compiler optimization affect floating-point instruction sequences, including the use of fused multiply-add instructions in the optimized AArch64 output.
+
+The project also validates Python and C inference across 66 inputs and demonstrates successful execution of a cross-compiled ARM64 binary under QEMU user-mode emulation.
+
+Together, these results provide a practical example of the relationship between machine learning inference, low-level implementation, compiler optimization, and processor architecture, while distinguishing observed behavior from unmeasured performance claims.

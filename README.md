@@ -4,61 +4,56 @@
 
 Model Detective is a hands-on project exploring how a machine learning model moves from trained parameters to C inference code and processor instructions.
 
-The project connects machine learning, numerical computation, compiler optimization, and ARM64 assembly through a small, reproducible classification example.
+The project connects machine learning, numerical computation, compiler optimization, and ARM64 assembly through a reproducible classification example.
 
-## Project Status
+## Project Overview
 
-The core inference pipeline has been implemented. Current work focuses on improving documentation, making experiments reproducible, and deepening the analysis of generated assembly.
+The project implements an end-to-end workflow that covers:
 
-## Objectives
-
-- Train a small machine learning model in Python.
-- Extract its learned parameters and implement inference in C.
-- Validate that Python and C produce consistent predictions.
-- Generate x86-64 and ARM64 assembly using GCC-compatible toolchains.
-- Compare assembly generated at different optimization levels.
-- Execute a cross-compiled ARM64 binary under emulation.
-- Establish a reproducible foundation for future performance measurements.
+- Training a logistic regression classifier in Python.
+- Exporting learned parameters and reference predictions.
+- Implementing model inference in C.
+- Validating Python and C numerical consistency across multiple inputs.
+- Generating x86-64 and ARM64 assembly at different optimization levels.
+- Cross-compiling and executing an ARM64 binary under QEMU emulation.
 
 ## How It Works
 
 ```text
 Synthetic classification dataset
-              |
-              v
-     Train model in Python
-              |
-              v
+             |
+             v
+      Train model in Python
+             |
+             v
  Export parameters and reference results
-              |
-              v
+             |
+             v
        Implement inference in C
-              |
-              v
-      Compare Python and C results
-              |
-              v
+             |
+             v
+ Compare Python and C across 66 inputs
+             |
+             v
  Generate x86-64 and ARM64 assembly
-              |
-              v
+             |
+             v
  Execute ARM64 binary using QEMU
-              |
-              v
- Analyze instructions and optimizations
 ```
 
 ## Technologies
 
 | Technology | Purpose |
 |---|---|
-| Python | Train the model and generate reference results |
-| scikit-learn | Train a logistic regression classifier |
-| C | Implement the model's inference calculations |
-| GCC | Compile the C program and generate assembly |
-| AArch64 cross-compiler | Generate ARM64 Linux code |
-| QEMU user-mode emulation | Execute the ARM64 binary on a non-ARM host |
-| Python `unittest` | Validate consistency between implementations |
-| Git and GitHub | Version control and project documentation |
+| Python | Model training and reference calculations |
+| scikit-learn | Logistic regression classifier |
+| NumPy | Numerical calculations |
+| C | Model inference implementation |
+| GCC | Compilation and assembly generation |
+| AArch64 cross-compiler | ARM64 Linux cross-compilation |
+| QEMU | ARM64 user-mode emulation |
+| Python `unittest` | Automated validation |
+| Git and GitHub | Version control and project hosting |
 
 ## Implemented Components
 
@@ -66,34 +61,49 @@ Synthetic classification dataset
 
 The Python training script generates a synthetic binary classification dataset and trains a logistic regression model.
 
-The current configuration uses:
+Configuration:
 
 - 300 generated samples.
 - Two input features.
-- An 80/20 training and test split.
-- A fixed random seed for reproducibility.
+- 80/20 training and test split.
+- Fixed random seed for reproducibility.
 
-The script exports the learned weights, bias, test input, and reference results for use by the C implementation.
+The script exports the learned weights, bias, reference prediction, and results for all held-out test samples.
 
 ### 2. C Inference
 
-The C implementation loads the exported parameters and calculates:
+The C implementation loads the exported model parameters and computes:
 
-- The linear score.
-- The sigmoid probability.
-- The predicted binary class.
+- Linear score.
+- Sigmoid probability.
+- Predicted binary class.
 
-This demonstrates how trained model parameters can be used to perform inference without running the original scikit-learn model.
+The executable accepts custom input values through command-line arguments, allowing predictions to be evaluated without modifying the source code.
 
 ### 3. Python and C Validation
 
-The project includes an automated test that compares C inference results against the Python reference.
+Automated tests compare C inference against Python reference calculations.
 
-The test checks numerical agreement within a defined tolerance and verifies that the predicted class matches.
+The test suite covers **66 inputs**:
+
+- 60 held-out test samples.
+- 6 additional edge inputs, including zero-valued inputs, positive and negative values, and a decision-boundary case.
+
+The tests check numerical agreement within a tolerance of `1e-9` and verify that the predicted classes match.
+
+The latest test run completed successfully:
+
+```text
+test_all_held_out_test_samples ... ok
+test_edge_inputs ... ok
+
+Ran 2 tests
+OK
+```
 
 ### 4. Assembly Generation
 
-Assembly is generated for two architectures at two optimization levels.
+Assembly listings are generated for x86-64 and ARM64 at two optimization levels.
 
 | Architecture | Optimization | Output |
 |---|---|---|
@@ -104,15 +114,15 @@ Assembly is generated for two architectures at two optimization levels.
 
 The compiler's `-S` option generates assembly without linking an executable.
 
-The ARM64 listings contain floating-point instructions such as `fmul` and `fadd`. The optimized version also includes `fmadd`, a fused multiply-add instruction.
+The ARM64 assembly contains floating-point instructions such as `fmul` and `fadd`. The optimized listing also includes `fmadd`, a fused multiply-add instruction.
 
-These instructions provide a starting point for studying compiler optimization. Their presence alone does not establish that one version is faster or more energy-efficient.
+These instructions illustrate how compiler optimization can affect generated machine-level code. Their presence alone does not establish a performance advantage.
 
 ### 5. ARM64 Execution Under Emulation
 
 The C program has been cross-compiled into a Linux AArch64 executable and successfully executed using QEMU user-mode emulation.
 
-For the current reference input, the program reports:
+For the reference input, the program reports:
 
 | Output | Value |
 |---|---:|
@@ -122,9 +132,9 @@ For the current reference input, the program reports:
 
 The emulated ARM64 program reproduces the expected output for this input at the displayed precision.
 
-**Important limitation:** QEMU execution demonstrates that the ARM64 binary can run under emulation. It does not measure native ARM hardware performance, energy consumption, or real-time behavior.
+QEMU execution demonstrates that the ARM64 binary can run under emulation. It does not establish native ARM hardware performance, energy consumption, or real-time behavior.
 
-## Current Model Results
+## Model Results
 
 The current training run reports:
 
@@ -133,7 +143,7 @@ The current training run reports:
 | Training accuracy | 98.33% |
 | Test accuracy | 100.00% |
 
-These results come from a small synthetic dataset and one fixed train/test split. They demonstrate the current pipeline, not generalization to real-world data.
+These results come from a synthetic dataset and one fixed train/test split. They demonstrate the implemented workflow rather than generalization to real-world data.
 
 ## Repository Structure
 
@@ -163,7 +173,7 @@ model-detective/
     └── inference_ARM_O2.s
 ```
 
-Generated binaries and other ignored files may not appear in the repository. Refer to the actual checkout if the directory structure changes.
+Generated binaries and other ignored files may not appear in the repository.
 
 ## Reproducing the Experiments
 
@@ -175,18 +185,22 @@ The following commands assume Windows PowerShell, an existing Python virtual env
 .\.venv\Scripts\python.exe python\train_model.py
 ```
 
-This regenerates the exported parameters and reference results.
+This regenerates the model parameters and Python reference results.
 
 ### 2. Compile and Run C Inference
-
-Using GCC:
 
 ```powershell
 gcc c\inference.c -o c\inference.exe -lm
 .\c\inference.exe
 ```
 
-### 3. Run the Prediction Test
+To evaluate custom input values:
+
+```powershell
+.\c\inference.exe 1.0 -1.0
+```
+
+### 3. Run the Automated Tests
 
 ```powershell
 .\.venv\Scripts\python.exe -m unittest discover -s tests -v
@@ -214,35 +228,20 @@ The compiler path may need to be adjusted to match your installation.
 
 ### 6. Cross-Compile and Execute the ARM64 Binary
 
-Cross-compilation requires the target Linux sysroot provided by the installed toolchain. See [ARM64 Inference Validation](arm/README.md) for the complete build and QEMU execution procedure.
+Cross-compilation requires the target Linux sysroot provided by the installed toolchain. See [ARM64 Inference Validation](arm/README.md) for the build and QEMU execution procedure.
 
 ## Limitations
 
 - The classifier uses synthetic rather than real-world data.
-- The reported test accuracy is based on one fixed split.
-- Current numerical validation uses a fixed reference input; broader input coverage would strengthen confidence.
-- ARM64 execution has been verified under emulation, not on physical ARM hardware.
-- No reliable native latency, throughput, or energy measurements have been established.
-- Assembly differences must be interpreted in context; instruction counts alone are not performance benchmarks.
+- The reported accuracy is based on one fixed train/test split.
+- Numerical agreement between implementations does not establish real-world predictive performance.
+- ARM64 execution was verified under emulation rather than on physical ARM hardware.
+- Native latency, throughput, and energy consumption have not been measured.
+- Assembly differences alone do not establish execution speed or energy efficiency.
 
-## Roadmap
+## Learning Outcomes
 
-- [x] Define the initial project specification.
-- [x] Train a model and export its parameters.
-- [x] Implement inference in C.
-- [x] Validate Python and C predictions.
-- [x] Generate x86-64 assembly at `-O0` and `-O2`.
-- [x] Generate ARM64 assembly at `-O0` and `-O2`.
-- [x] Cross-compile the ARM64 executable.
-- [x] Execute the ARM64 binary under QEMU.
-- [ ] Expand numerical tests across multiple inputs and edge cases.
-- [ ] Document instruction-level differences with exact assembly excerpts.
-- [ ] Establish reproducible benchmarking on suitable hardware.
-- [ ] Compare code size and execution performance using appropriate measurements.
-
-## Learning Goals
-
-This project aims to develop practical understanding of:
+This project demonstrates practical experience with:
 
 - Machine learning inference and learned parameters.
 - Numerical consistency across implementations.

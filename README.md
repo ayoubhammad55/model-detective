@@ -8,7 +8,7 @@ The project connects machine learning, numerical computation, compiler optimizat
 
 ## Project Overview
 
-The project implements an end-to-end workflow that covers:
+The project implements an end-to-end workflow covering:
 
 - Training a logistic regression classifier in Python.
 - Exporting learned parameters and reference predictions.
@@ -39,6 +39,9 @@ Synthetic classification dataset
              |
              v
  Execute ARM64 binary using QEMU
+             |
+             v
+ Examine generated instructions
 ```
 
 ## Technologies
@@ -80,6 +83,8 @@ The C implementation loads the exported model parameters and computes:
 
 The executable accepts custom input values through command-line arguments, allowing predictions to be evaluated without modifying the source code.
 
+This demonstrates how trained model parameters can be used for inference without running the original scikit-learn model.
+
 ### 3. Python and C Validation
 
 Automated tests compare C inference against Python reference calculations.
@@ -89,7 +94,7 @@ The test suite covers **66 inputs**:
 - 60 held-out test samples.
 - 6 additional edge inputs, including zero-valued inputs, positive and negative values, and a decision-boundary case.
 
-The tests check numerical agreement within a tolerance of `1e-9` and verify that the predicted classes match.
+The tests check numerical agreement within a tolerance of `1e-9` and verify that predicted classes match.
 
 The latest test run completed successfully:
 
@@ -100,6 +105,8 @@ test_edge_inputs ... ok
 Ran 2 tests
 OK
 ```
+
+These tests validate consistency between the two implementations; they do not establish real-world predictive performance.
 
 ### 4. Assembly Generation
 
@@ -114,9 +121,9 @@ Assembly listings are generated for x86-64 and ARM64 at two optimization levels.
 
 The compiler's `-S` option generates assembly without linking an executable.
 
-The ARM64 assembly contains floating-point instructions such as `fmul` and `fadd`. The optimized listing also includes `fmadd`, a fused multiply-add instruction.
+The ARM64 listings contain floating-point instructions such as `fmul` and `fadd`. The optimized listing also includes `fmadd`, a fused multiply-add instruction.
 
-These instructions illustrate how compiler optimization can affect generated machine-level code. Their presence alone does not establish a performance advantage.
+These instructions illustrate how compiler optimization affects generated machine-level code. Their presence alone does not establish a performance advantage.
 
 ### 5. ARM64 Execution Under Emulation
 
@@ -132,7 +139,7 @@ For the reference input, the program reports:
 
 The emulated ARM64 program reproduces the expected output for this input at the displayed precision.
 
-QEMU execution demonstrates that the ARM64 binary can run under emulation. It does not establish native ARM hardware performance, energy consumption, or real-time behavior.
+QEMU execution demonstrates that the ARM64 binary can run under emulation. It does not measure native ARM hardware performance, energy consumption, or real-time behavior.
 
 ## Model Results
 
@@ -233,7 +240,7 @@ Cross-compilation requires the target Linux sysroot provided by the installed to
 ## Limitations
 
 - The classifier uses synthetic rather than real-world data.
-- The reported accuracy is based on one fixed train/test split.
+- Reported accuracy is based on one fixed train/test split.
 - Numerical agreement between implementations does not establish real-world predictive performance.
 - ARM64 execution was verified under emulation rather than on physical ARM hardware.
 - Native latency, throughput, and energy consumption have not been measured.

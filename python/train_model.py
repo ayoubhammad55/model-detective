@@ -59,6 +59,21 @@ actual_class = int(y_test[0])
 
 
 # 7. Save parameters and test sample for the C program
+# Calculate Python reference results for every held-out test sample.
+test_samples = []
+
+for test_sample, actual in zip(X_test, y_test):
+    test_score = float(np.dot(weights, test_sample) + bias)
+    test_probability = float(1 / (1 + np.exp(-test_score)))
+    test_prediction = int(test_probability >= 0.5)
+
+    test_samples.append({
+        "input": [float(x) for x in test_sample],
+        "linear_score": test_score,
+        "probability": test_probability,
+        "predicted_class": test_prediction,
+        "actual_class": int(actual),
+    })
 project_root = Path(__file__).resolve().parents[1]
 output_path = project_root / "results" / "model_parameters.json"
 
@@ -70,6 +85,7 @@ model_data = {
     "probability": probability,
     "predicted_class": predicted_class,
     "actual_class": actual_class,
+    "test_samples": test_samples,
 }
 
 output_path.parent.mkdir(parents=True, exist_ok=True)

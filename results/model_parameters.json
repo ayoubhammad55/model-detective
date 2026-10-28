@@ -11,5 +11,607 @@
     "linear_score": -3.788110560018324,
     "probability": 0.022137186200501237,
     "predicted_class": 0,
-    "actual_class": 0
+    "actual_class": 0,
+    "test_samples": [
+        {
+            "input": [
+                1.841955082321576,
+                -1.2821814868125592
+            ],
+            "linear_score": -3.788110560018324,
+            "probability": 0.022137186200501237,
+            "predicted_class": 0,
+            "actual_class": 0
+        },
+        {
+            "input": [
+                1.689294455142977,
+                -1.0740508752717037
+            ],
+            "linear_score": -3.1891454294703934,
+            "probability": 0.039576248973167465,
+            "predicted_class": 0,
+            "actual_class": 0
+        },
+        {
+            "input": [
+                1.5216924383604116,
+                -1.6481213886948949
+            ],
+            "linear_score": -5.216111414320477,
+            "probability": 0.0053990885289027825,
+            "predicted_class": 0,
+            "actual_class": 0
+        },
+        {
+            "input": [
+                1.4685025377011174,
+                -1.4581488272639092
+            ],
+            "linear_score": -4.614537644537555,
+            "probability": 0.009809581596143854,
+            "predicted_class": 0,
+            "actual_class": 0
+        },
+        {
+            "input": [
+                1.0379831228101901,
+                -2.556549712787617
+            ],
+            "linear_score": -8.562791788119815,
+            "probability": 0.0001910485726949975,
+            "predicted_class": 0,
+            "actual_class": 0
+        },
+        {
+            "input": [
+                1.3560680818167876,
+                -2.2305903515967107
+            ],
+            "linear_score": -7.269910270934893,
+            "probability": 0.0006956901363370726,
+            "predicted_class": 0,
+            "actual_class": 0
+        },
+        {
+            "input": [
+                3.017175556148662,
+                1.4479067272767554
+            ],
+            "linear_score": 6.092290164947319,
+            "probability": 0.9977448704130193,
+            "predicted_class": 1,
+            "actual_class": 1
+        },
+        {
+            "input": [
+                1.1229893233200412,
+                -2.447425157334492
+            ],
+            "linear_score": -8.143641937206041,
+            "probability": 0.0002904925951535016,
+            "predicted_class": 0,
+            "actual_class": 0
+        },
+        {
+            "input": [
+                2.2996001055900863,
+                0.9228750306057704
+            ],
+            "linear_score": 3.8791149167918046,
+            "probability": 0.9797494498959854,
+            "predicted_class": 1,
+            "actual_class": 1
+        },
+        {
+            "input": [
+                1.5886237381318336,
+                -1.1932056443114034
+            ],
+            "linear_score": -3.651821423794676,
+            "probability": 0.02528776939048069,
+            "predicted_class": 0,
+            "actual_class": 0
+        },
+        {
+            "input": [
+                0.1993120030584239,
+                3.3859641155416433
+            ],
+            "linear_score": 10.780467947847024,
+            "probability": 0.9999791985684581,
+            "predicted_class": 1,
+            "actual_class": 1
+        },
+        {
+            "input": [
+                1.0562881331824565,
+                1.5964269861481177
+            ],
+            "linear_score": 5.340323940602001,
+            "probability": 0.995228558420656,
+            "predicted_class": 1,
+            "actual_class": 1
+        },
+        {
+            "input": [
+                1.238918848391773,
+                -1.7841214037036806
+            ],
+            "linear_score": -5.851102846743409,
+            "probability": 0.002868473013886992,
+            "predicted_class": 0,
+            "actual_class": 0
+        },
+        {
+            "input": [
+                0.8383838130457145,
+                1.9437695610645993
+            ],
+            "linear_score": 6.363395427170993,
+            "probability": 0.9982794606270168,
+            "predicted_class": 1,
+            "actual_class": 1
+        },
+        {
+            "input": [
+                1.7679913604764703,
+                0.7403554756501106
+            ],
+            "linear_score": 2.9300519969599,
+            "probability": 0.9493121771464275,
+            "predicted_class": 1,
+            "actual_class": 1
+        },
+        {
+            "input": [
+                2.161971879435155,
+                2.1678764045907704
+            ],
+            "linear_score": 7.955923816816704,
+            "probability": 0.9996495436286188,
+            "predicted_class": 1,
+            "actual_class": 1
+        },
+        {
+            "input": [
+                0.8062217538361376,
+                2.0050666011402454
+            ],
+            "linear_score": 6.547948500446176,
+            "probability": 0.9985689982093741,
+            "predicted_class": 1,
+            "actual_class": 1
+        },
+        {
+            "input": [
+                1.2921074819861704,
+                -1.6236234887838208
+            ],
+            "linear_score": -5.280374656221541,
+            "probability": 0.005064741057128902,
+            "predicted_class": 0,
+            "actual_class": 0
+        },
+        {
+            "input": [
+                0.6811102885199243,
+                1.946946217634721
+            ],
+            "linear_score": 6.273864200400557,
+            "probability": 0.9981186155374089,
+            "predicted_class": 1,
+            "actual_class": 1
+        },
+        {
+            "input": [
+                1.5473524257028786,
+                1.9925611845700013
+            ],
+            "linear_score": 6.978095016826082,
+            "probability": 0.9990687908544806,
+            "predicted_class": 1,
+            "actual_class": 1
+        },
+        {
+            "input": [
+                1.6914797408844138,
+                -1.0042088809699605
+            ],
+            "linear_score": -2.954136476848099,
+            "probability": 0.049541373841022814,
+            "predicted_class": 0,
+            "actual_class": 0
+        },
+        {
+            "input": [
+                1.6059002346876885,
+                -1.2684229117488437
+            ],
+            "linear_score": -3.8924164403067882,
+            "probability": 0.019988318955811574,
+            "predicted_class": 0,
+            "actual_class": 0
+        },
+        {
+            "input": [
+                3.0842012266289935,
+                1.3817119199474783
+            ],
+            "linear_score": 5.913556647607977,
+            "probability": 0.9973047264041915,
+            "predicted_class": 1,
+            "actual_class": 1
+        },
+        {
+            "input": [
+                1.064503865685115,
+                -2.2860335640642457
+            ],
+            "linear_score": -7.641042180150977,
+            "probability": 0.00048009699938128357,
+            "predicted_class": 0,
+            "actual_class": 0
+        },
+        {
+            "input": [
+                0.7860057410591497,
+                1.811678343342518
+            ],
+            "linear_score": 5.888202130882368,
+            "probability": 0.9972357066655895,
+            "predicted_class": 1,
+            "actual_class": 1
+        },
+        {
+            "input": [
+                1.1418809397718779,
+                -2.0081370552314763
+            ],
+            "linear_score": -6.662218725050042,
+            "probability": 0.001276675027247714,
+            "predicted_class": 0,
+            "actual_class": 0
+        },
+        {
+            "input": [
+                0.830689013560625,
+                -2.3340658542205075
+            ],
+            "linear_score": -7.950608303514989,
+            "probability": 0.0003523235286102247,
+            "predicted_class": 0,
+            "actual_class": 0
+        },
+        {
+            "input": [
+                0.7837323892887328,
+                2.257247629468494
+            ],
+            "linear_score": 7.377156979814136,
+            "probability": 0.9993750145326051,
+            "predicted_class": 1,
+            "actual_class": 1
+        },
+        {
+            "input": [
+                1.2636268693044306,
+                -1.8293323677770297
+            ],
+            "linear_score": -5.986595935304318,
+            "probability": 0.002505905867134523,
+            "predicted_class": 0,
+            "actual_class": 0
+        },
+        {
+            "input": [
+                1.2695003641998077,
+                2.298535476654932
+            ],
+            "linear_score": 7.8246153799981935,
+            "probability": 0.9996003874368732,
+            "predicted_class": 1,
+            "actual_class": 1
+        },
+        {
+            "input": [
+                1.7165333356229746,
+                -0.9419449498694136
+            ],
+            "linear_score": -2.7299124008072777,
+            "probability": 0.06123119799777276,
+            "predicted_class": 0,
+            "actual_class": 0
+        },
+        {
+            "input": [
+                1.0593503572498806,
+                1.5946985359354247
+            ],
+            "linear_score": 5.336492503088206,
+            "probability": 0.9952103296036721,
+            "predicted_class": 1,
+            "actual_class": 1
+        },
+        {
+            "input": [
+                0.9224769158498537,
+                0.5022507551189996
+            ],
+            "linear_score": 1.5951545518723969,
+            "probability": 0.8313400770100321,
+            "predicted_class": 1,
+            "actual_class": 1
+        },
+        {
+            "input": [
+                1.2409346544216646,
+                -1.8238241409793563
+            ],
+            "linear_score": -5.982622395086385,
+            "probability": 0.002515857892976567,
+            "predicted_class": 0,
+            "actual_class": 0
+        },
+        {
+            "input": [
+                1.7581925081647836,
+                -0.8082840795534842
+            ],
+            "linear_score": -2.2562948582305995,
+            "probability": 0.0948078647295652,
+            "predicted_class": 0,
+            "actual_class": 0
+        },
+        {
+            "input": [
+                1.2971219186848604,
+                2.01750367663125
+            ],
+            "linear_score": 6.902171143411749,
+            "probability": 0.9989954104590798,
+            "predicted_class": 1,
+            "actual_class": 1
+        },
+        {
+            "input": [
+                2.0329846102995033,
+                -0.5659799813189289
+            ],
+            "linear_score": -1.270805503825086,
+            "probability": 0.2191193942987078,
+            "predicted_class": 0,
+            "actual_class": 0
+        },
+        {
+            "input": [
+                3.403555268650119,
+                0.9890849436254917
+            ],
+            "linear_score": 4.803618068076804,
+            "probability": 0.9918666684580552,
+            "predicted_class": 1,
+            "actual_class": 1
+        },
+        {
+            "input": [
+                1.2201241248289454,
+                1.4772368535708276
+            ],
+            "linear_score": 5.045976228598407,
+            "probability": 0.9936059715978698,
+            "predicted_class": 1,
+            "actual_class": 1
+        },
+        {
+            "input": [
+                1.1046654031751448,
+                1.1761057349910584
+            ],
+            "linear_score": 3.965182748910129,
+            "probability": 0.9813883906375074,
+            "predicted_class": 1,
+            "actual_class": 1
+        },
+        {
+            "input": [
+                1.5415754279992817,
+                -1.6116645742641382
+            ],
+            "linear_score": -5.081503410325385,
+            "probability": 0.006172231918916339,
+            "predicted_class": 0,
+            "actual_class": 0
+        },
+        {
+            "input": [
+                -0.13001023805736356,
+                1.5704070885034842
+            ],
+            "linear_score": 4.49781512222102,
+            "probability": 0.9889892906017831,
+            "predicted_class": 1,
+            "actual_class": 1
+        },
+        {
+            "input": [
+                0.8323515075380125,
+                2.196554944493385
+            ],
+            "linear_score": 7.20510583461914,
+            "probability": 0.9992577677381909,
+            "predicted_class": 1,
+            "actual_class": 1
+        },
+        {
+            "input": [
+                1.9292721338203922,
+                0.7127421252832501
+            ],
+            "linear_score": 2.940395893391588,
+            "probability": 0.9498076036440427,
+            "predicted_class": 1,
+            "actual_class": 1
+        },
+        {
+            "input": [
+                1.4889955030432853,
+                -1.4142474284491575
+            ],
+            "linear_score": -4.454639498758571,
+            "probability": 0.01149093330311396,
+            "predicted_class": 0,
+            "actual_class": 0
+        },
+        {
+            "input": [
+                1.7971734515820605,
+                -1.21696930134999
+            ],
+            "linear_score": -3.598498117937125,
+            "probability": 0.026635904351043578,
+            "predicted_class": 0,
+            "actual_class": 0
+        },
+        {
+            "input": [
+                0.2611376773837768,
+                3.02824044541512
+            ],
+            "linear_score": 9.6232763043174,
+            "probability": 0.9999338339107071,
+            "predicted_class": 1,
+            "actual_class": 1
+        },
+        {
+            "input": [
+                1.870623133592196,
+                -0.6850442108472243
+            ],
+            "linear_score": -1.7724653535786234,
+            "probability": 0.1452360059986142,
+            "predicted_class": 0,
+            "actual_class": 0
+        },
+        {
+            "input": [
+                0.7181863597889588,
+                1.3678417323053484
+            ],
+            "linear_score": 4.360405618791507,
+            "probability": 0.9873878915077156,
+            "predicted_class": 1,
+            "actual_class": 1
+        },
+        {
+            "input": [
+                1.355801545899299,
+                -1.696541651059092
+            ],
+            "linear_score": -5.483719070085146,
+            "probability": 0.004136669352647457,
+            "predicted_class": 0,
+            "actual_class": 0
+        },
+        {
+            "input": [
+                0.9560743886850797,
+                -2.354684195077746
+            ],
+            "linear_score": -7.939725889058539,
+            "probability": 0.0003561772243668001,
+            "predicted_class": 0,
+            "actual_class": 0
+        },
+        {
+            "input": [
+                1.9528121591647816,
+                1.7529706228803343
+            ],
+            "linear_score": 6.434889020958045,
+            "probability": 0.998397983805967,
+            "predicted_class": 1,
+            "actual_class": 1
+        },
+        {
+            "input": [
+                1.5049057457372423,
+                -1.6452214473758928
+            ],
+            "linear_score": -5.2171016021216925,
+            "probability": 0.005393773884703074,
+            "predicted_class": 0,
+            "actual_class": 0
+        },
+        {
+            "input": [
+                1.4758540597220267,
+                -1.344339705914164
+            ],
+            "linear_score": -4.229171254266491,
+            "probability": 0.014355377517763456,
+            "predicted_class": 0,
+            "actual_class": 0
+        },
+        {
+            "input": [
+                2.147700619857486,
+                1.3267796660502262
+            ],
+            "linear_score": 5.133417159835682,
+            "probability": 0.9941381863188843,
+            "predicted_class": 1,
+            "actual_class": 1
+        },
+        {
+            "input": [
+                1.9562507102180597,
+                1.0728523088915876
+            ],
+            "linear_score": 4.162123749158789,
+            "probability": 0.9846643969751502,
+            "predicted_class": 1,
+            "actual_class": 1
+        },
+        {
+            "input": [
+                2.3582193197393817,
+                1.5421091194870467
+            ],
+            "linear_score": 5.987746525470787,
+            "probability": 0.997496968532652,
+            "predicted_class": 1,
+            "actual_class": 1
+        },
+        {
+            "input": [
+                1.8072281910978059,
+                -0.9159276688897893
+            ],
+            "linear_score": -2.5851286863415233,
+            "probability": 0.0701016670263037,
+            "predicted_class": 0,
+            "actual_class": 0
+        },
+        {
+            "input": [
+                1.7274839992953022,
+                -0.5180103542935178
+            ],
+            "linear_score": -1.3049028089483283,
+            "probability": 0.21334103860904363,
+            "predicted_class": 0,
+            "actual_class": 0
+        },
+        {
+            "input": [
+                1.8907413279685477,
+                1.7110816749083337
+            ],
+            "linear_score": 6.2552442504005406,
+            "probability": 0.9980833238513346,
+            "predicted_class": 1,
+            "actual_class": 1
+        }
+    ]
 }
